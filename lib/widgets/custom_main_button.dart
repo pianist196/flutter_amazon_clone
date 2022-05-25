@@ -27,7 +27,15 @@ class CustomMainButton extends StatelessWidget {
         ),
       ),
       onPressed: onPressed,
-      child: isLoading ? child : const CircularProgressIndicator(color: Colors.white),
+      child: !isLoading
+          ? child
+          : const Padding(
+              padding: EdgeInsets.symmetric(vertical: 5),
+              child: AspectRatio(
+                aspectRatio: 1 / 1,
+                child: CircularProgressIndicator(color: Colors.white),
+              ),
+            ),
     );
   }
 }
