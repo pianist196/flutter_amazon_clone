@@ -20,6 +20,7 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  AuthenticationMethods authenticationMethods = AuthenticationMethods();
 
   @override
   void dispose() {
@@ -82,7 +83,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         ),
                         TextFieldWidget(
                           title: "Password",
-                          controller: emailController,
+                          controller: passwordController,
                           obscureText: true,
                           hintText: "Enter your password",
                         ),
@@ -98,7 +99,20 @@ class _SignInScreenState extends State<SignInScreen> {
                             ),
                             color: yellowColor,
                             isLoading: false,
-                            onPressed: () {},
+                            onPressed: () async {
+                              String output =
+                                  await authenticationMethods.signInUser(
+                                email: emailController.text,
+                                password: passwordController.text,
+                              );
+                              if (output == "success") {
+                              } else {
+                                Utils().showSnackBar(
+                                  context: context,
+                                  content: output,
+                                );
+                              }
+                            },
                           ),
                         ),
                       ],
@@ -138,7 +152,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     color: Colors.grey[400]!,
                     isLoading: false,
                     onPressed: () {
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(builder: (context) {
                           return const SignUpScreen();

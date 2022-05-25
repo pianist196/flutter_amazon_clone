@@ -21,8 +21,31 @@ class AuthenticationMethods {
           password: password,
         );
         output = "success";
-      } catch (e) {
-        output = e.toString();
+      } on FirebaseAuthException catch (e) {
+        output = e.message.toString();
+      }
+    } else {
+      output = "Please fill up all the fields!";
+    }
+    return output;
+  }
+
+  Future<String> signInUser({
+    required String email,
+    required String password,
+  }) async {
+    email.trim();
+    password.trim();
+    String output = "Something went wrong";
+    if (email != "" && password != "") {
+      try {
+        await firebaseAuth.signInWithEmailAndPassword(
+          email: email,
+          password: password,
+        );
+        output = "success";
+      } on FirebaseAuthException catch (e) {
+        output = e.message.toString();
       }
     } else {
       output = "Please fill up all the fields!";

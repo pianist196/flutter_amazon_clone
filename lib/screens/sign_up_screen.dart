@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_amazon_clone/screens/sign_in_screen.dart';
 import '../resources/authentication_methods.dart';
 import '../utils/color_themes.dart';
 import '../utils/constants.dart';
@@ -123,7 +124,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     password: passwordController.text,
                                   );
                                   if (output == 'success') {
-                                  } else {}
+                                  } else {
+                                    Utils().showSnackBar(
+                                      context: context,
+                                      content: output,
+                                    );
+                                  }
                                 },
                               ),
                             ),
@@ -143,7 +149,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     color: Colors.grey[400]!,
                     isLoading: false,
                     onPressed: () {
-                      Navigator.pop(context);
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) {
+                          return const SignInScreen();
+                        }),
+                      );
                     },
                   ),
                 ],
