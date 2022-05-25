@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_amazon_clone/utils/constants.dart';
 import 'package:flutter_amazon_clone/utils/utils.dart';
-import 'package:flutter/src/material/colors.dart';
 import 'package:flutter_amazon_clone/widget/custom_main_button.dart';
 import 'package:flutter_amazon_clone/widget/text_field_widget.dart';
 
@@ -43,8 +42,8 @@ class _SignInScreenState extends State<SignInScreen> {
                 height: screenSize.height * 0.10,
               ),
               Container(
-                height: screenSize.height * 0.5,
-                width: screenSize.width * 0.8,
+                height: screenSize.height * 0.6,
+                width: screenSize.width * 0.6,
                 padding: const EdgeInsets.all(25),
                 decoration: BoxDecoration(
                   border: Border.all(
@@ -54,10 +53,10 @@ class _SignInScreenState extends State<SignInScreen> {
                 ),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       "Sign In",
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
