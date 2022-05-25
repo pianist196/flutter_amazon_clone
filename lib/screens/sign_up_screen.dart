@@ -20,6 +20,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   AuthenticationMethods authenticationMethods = AuthenticationMethods();
+  bool isLoading = false;
 
   @override
   void dispose() {
@@ -114,8 +115,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   ),
                                 ),
                                 color: yellowColor,
-                                isLoading: false,
+                                isLoading: isLoading,
                                 onPressed: () async {
+                                  setState(() {
+                                    isLoading = true;
+                                  });
                                   String output =
                                       await authenticationMethods.signUpUser(
                                     name: nameController.text,
@@ -123,7 +127,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     email: emailController.text,
                                     password: passwordController.text,
                                   );
+                                  setState(() {
+                                    isLoading = false;
+                                  });
                                   if (output == 'success') {
+                                    Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (_) =>
+                                                const SignInScreen()));
                                   } else {
                                     Utils().showSnackBar(
                                       context: context,
