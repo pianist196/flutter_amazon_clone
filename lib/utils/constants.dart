@@ -5,6 +5,7 @@
 // import 'package:flutter_amazon_clone/screens/more_screen.dart';
 // import 'package:flutter_amazon_clone/widgets/simple_product_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_amazon_clone/screens/home_screen.dart';
 
 const double kAppBarHeight = 80;
 
@@ -23,12 +24,13 @@ const List<String> categoriesList = [
   "Essential"
 ];
 
-// const List<Widget> screens = [
-//   HomeScreen(),
-//   AccountScreen(),
-//   CartScreen(),
-//   MoreScreen(),
-// ];
+const List<Widget> screens = [
+  HomeScreen(),
+  Center(child: Text("Home Screen")),
+  Center(child: Text("Account Screen")),
+  Center(child: Text("Cart Screen")),
+  Center(child: Text("More Screen")),
+];
 
 const List<String> categoryLogos = [
   "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png",

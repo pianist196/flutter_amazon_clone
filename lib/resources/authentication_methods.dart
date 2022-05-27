@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_amazon_clone/model/user_details.model.dart';
 import 'package:flutter_amazon_clone/resources/cloudfirestore_methods.dart';
 
 class AuthenticationMethods {
@@ -22,9 +23,12 @@ class AuthenticationMethods {
           email: email,
           password: password,
         );
-        await cloudFirestoreClass.uploadNameAndAddressToDatabase(
+        UserDetailsModel user = UserDetailsModel(
           name: name,
           address: address,
+        );
+        await cloudFirestoreClass.uploadNameAndAddressToDatabase(
+          user: user,
         );
         output = "success";
       } on FirebaseAuthException catch (e) {

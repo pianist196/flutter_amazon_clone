@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_amazon_clone/layout/screen_layout.dart';
 import 'package:flutter_amazon_clone/screens/sign_in_screen.dart';
 import 'package:flutter_amazon_clone/utils/color_themes.dart';
 
@@ -45,12 +46,7 @@ class AmazonClone extends StatelessWidget {
               );
             } else if (user.hasData) {
               // FirebaseAuth.instance.signOut();
-              return ElevatedButton(
-                onPressed: () {
-                  FirebaseAuth.instance.signOut();
-                },
-                child: const Text("Sign Out"),
-              );
+              return const ScreenLayout();
             } else {
               return const SignInScreen();
             }
