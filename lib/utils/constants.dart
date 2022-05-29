@@ -5,7 +5,12 @@
 // import 'package:flutter_amazon_clone/screens/more_screen.dart';
 // import 'package:flutter_amazon_clone/widgets/simple_product_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_amazon_clone/screens/account_screen.dart';
+import 'package:flutter_amazon_clone/screens/cart_screen.dart';
 import 'package:flutter_amazon_clone/screens/home_screen.dart';
+import 'package:flutter_amazon_clone/screens/more_screen.dart';
+
+import '../widgets/simple_product_widget.dart';
 
 const double kAppBarHeight = 80;
 
@@ -26,14 +31,13 @@ const List<String> categoriesList = [
 
 const List<Widget> screens = [
   HomeScreen(),
-  Center(child: Text("Home Screen")),
-  Center(child: Text("Account Screen")),
-  Center(child: Text("Cart Screen")),
-  Center(child: Text("More Screen")),
+  AccountScreen(),
+  CartScreen(),
+  MoreScreen(),
 ];
 
 const List<String> categoryLogos = [
-  "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png",
+  "https://m.media-amazon.com/images/I/116KbsvwCRL._SX90_SY90_.png",
   "https://m.media-amazon.com/images/I/116KbsvwCRL._SX90_SY90_.png",
   "https://m.media-amazon.com/images/I/115yueUc1aL._SX90_SY90_.png",
   "https://m.media-amazon.com/images/I/11qyfRJvEbL._SX90_SY90_.png",
@@ -68,6 +72,37 @@ const List<String> adItemNames = [
 
 const String amazonLogo =
     "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/2560px-Amazon_logo.svg.png";
+
+List<Widget> testChildren = [
+  SimpleProductWidget(
+      url: "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png"),
+  SimpleProductWidget(
+      url: "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png"),
+  SimpleProductWidget(
+      url: "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png"),
+  SimpleProductWidget(
+      url: "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png"),
+  SimpleProductWidget(
+      url: "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png"),
+  SimpleProductWidget(
+      url: "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png"),
+  SimpleProductWidget(
+      url: "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png"),
+  SimpleProductWidget(
+      url: "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png"),
+  SimpleProductWidget(
+      url: "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png"),
+  SimpleProductWidget(
+      url: "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png"),
+  SimpleProductWidget(
+      url: "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png"),
+  SimpleProductWidget(
+      url: "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png"),
+  SimpleProductWidget(
+      url: "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png"),
+  SimpleProductWidget(
+      url: "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png"),
+];
 
 // List<Widget> testChildren = [
 //   SimpleProductWidget(

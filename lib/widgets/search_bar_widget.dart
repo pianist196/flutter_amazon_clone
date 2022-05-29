@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_amazon_clone/screens/results_screen.dart';
 import 'package:flutter_amazon_clone/screens/search_sceen.dart';
 import 'package:flutter_amazon_clone/utils/color_themes.dart';
 import 'package:flutter_amazon_clone/utils/constants.dart';
@@ -56,14 +57,20 @@ class SearchBarWidget extends StatelessWidget with PreferredSizeWidget {
                 ],
               ),
               child: TextField(
+                onSubmitted: (String query) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ResultsScreen(query: query),
+                    ),
+                  );
+                },
                 readOnly: isReadOnly,
                 onTap: () {
-                  if (!isReadOnly) {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const SearchScreen()));
-                  }
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SearchScreen()));
                 },
                 decoration: InputDecoration(
                   hintText: "Search for something",

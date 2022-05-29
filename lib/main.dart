@@ -3,6 +3,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_amazon_clone/layout/screen_layout.dart';
+import 'package:flutter_amazon_clone/model/product_model.dart';
+import 'package:flutter_amazon_clone/screens/product_screen.dart';
+import 'package:flutter_amazon_clone/screens/results_screen.dart';
 import 'package:flutter_amazon_clone/screens/sign_in_screen.dart';
 import 'package:flutter_amazon_clone/utils/color_themes.dart';
 
@@ -45,8 +48,21 @@ class AmazonClone extends StatelessWidget {
                 ),
               );
             } else if (user.hasData) {
-              // FirebaseAuth.instance.signOut();
-              return const ScreenLayout();
+              // return const ScreenLayout();
+              return ProductScreen(
+                productModel: ProductModel(
+                  url:
+                      "https://m.media-amazon.com/images/I/11M5KkkmavL._SS70_.png",
+                  productName: "Alex qWE",
+                  cost: 902973492362,
+                  discount: 0,
+                  uid: "asdfalkcn",
+                  sellerName: "alfkan244mskdodlv",
+                  sellerUid: "adlfksnc",
+                  rating: 1,
+                  noOfRating: 1,
+                ),
+              );
             } else {
               return const SignInScreen();
             }
