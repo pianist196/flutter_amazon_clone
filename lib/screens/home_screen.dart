@@ -48,8 +48,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 const SizedBox(
                   height: kAppBarHeight / 2,
                 ),
-                CategoriesHorizontalListViewBar(),
-                BannerAdWidget(),
+                const CategoriesHorizontalListViewBar(),
+                const BannerAdWidget(),
                 ProductsShowcaseListView(
                     title: "Upto 70% Off", children: testChildren),
                 ProductsShowcaseListView(
@@ -61,13 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
-          UserDetailsBar(
-            offset: offset,
-            userDetails: UserDetailsModel(
-              name: "asaad",
-              address: "asdasdsdcvbl",
-            ),
-          )
+          UserDetailsBar(offset: offset)
         ],
       ),
     );

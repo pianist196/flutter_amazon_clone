@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_amazon_clone/model/product_model.dart';
+import 'package:flutter_amazon_clone/screens/product_screen.dart';
 import 'package:flutter_amazon_clone/utils/color_themes.dart';
 import 'package:flutter_amazon_clone/utils/utils.dart';
 import 'package:flutter_amazon_clone/widgets/custom_simple_rounded_button.dart';
@@ -9,7 +10,8 @@ import 'package:flutter_amazon_clone/widgets/product_information_widget.dart';
 class CartItemWidget extends StatelessWidget {
   final ProductModel productModel;
 
-  const CartItemWidget({Key? key, required this.productModel}) : super(key: key);
+  const CartItemWidget({Key? key, required this.productModel})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,27 +32,37 @@ class CartItemWidget extends StatelessWidget {
       child: Column(
         children: [
           Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                SizedBox(
-                  width: screenSize.width / 3,
-                  child: Align(
-                    alignment: Alignment.topCenter,
-                    child: Center(
-                      child: Image.network(
-                        productModel.url,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        ProductScreen(productModel: productModel),
+                  ),
+                );
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: screenSize.width / 3,
+                    child: Align(
+                      alignment: Alignment.topCenter,
+                      child: Center(
+                        child: Image.network(
+                          productModel.url,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                ProductInformationWidget(
-                  productName:
-                  productModel.productName,
-                  cost: productModel.cost,
-                  sellerName: productModel.sellerName,
-                ),
-              ],
+                  ProductInformationWidget(
+                    productName: productModel.productName,
+                    cost: productModel.cost,
+                    sellerName: productModel.sellerName,
+                  ),
+                ],
+              ),
             ),
             flex: 3,
           ),

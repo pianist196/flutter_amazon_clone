@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_amazon_clone/model/user_details.model.dart';
+import 'package:flutter_amazon_clone/providers/user_details_provider.dart';
+import 'package:flutter_amazon_clone/screens/sell_screen.dart';
 import 'package:flutter_amazon_clone/utils/constants.dart';
 import 'package:flutter_amazon_clone/utils/utils.dart';
 import 'package:flutter_amazon_clone/widgets/account_screen_app_bar.dart';
 import 'package:flutter_amazon_clone/widgets/custom_main_button.dart';
+import 'package:provider/provider.dart';
 import '../utils/color_themes.dart';
 import '../widgets/products_showcase_list_view.dart';
 
@@ -31,7 +35,7 @@ class _AccountScreenState extends State<AccountScreen> {
                 padding: const EdgeInsets.all(8.0),
                 child: CustomMainButton(
                   child: const Text(
-                    "Sign In",
+                    "Sign Out",
                     style: TextStyle(
                       color: Colors.black,
                     ),
@@ -52,7 +56,14 @@ class _AccountScreenState extends State<AccountScreen> {
                   ),
                   color: yellowColor,
                   isLoading: false,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SellScreen(),
+                      ),
+                    );
+                  },
                 ),
               ),
               ProductsShowcaseListView(
@@ -107,6 +118,8 @@ class IntroductionWidgetAccountScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    UserDetailsModel userDetailsModel =
+        Provider.of<UserDetailsProvider>(context).userDetails;
     return Container(
       height: kAppBarHeight / 2,
       decoration: const BoxDecoration(
@@ -141,7 +154,7 @@ class IntroductionWidgetAccountScreen extends StatelessWidget {
                       ),
                     ),
                     TextSpan(
-                      text: "Alex",
+                      text: userDetailsModel.name,
                       style: TextStyle(
                           color: Colors.grey[800],
                           fontSize: 27,
