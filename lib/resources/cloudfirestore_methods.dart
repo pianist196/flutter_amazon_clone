@@ -44,11 +44,28 @@ class CloudFirestoreClass {
     String output = "Something went wrong";
     if (image != null && productName != "" && rowCost != "") {
       try {
+        String uid = Utils().getUid();
         String url = await uploadImageToDataBase(
           image: image,
-          uid: Utils().getUid(),
+          uid: uid,
         );
-        print(url);
+        double cost = double.parse(rowCost);
+        cost = cost - (cost * (discount / 100));
+        ProductModel productModel = ProductModel(
+          url: url,
+          productName: productName,
+          cost: cost,
+          discount: discount,
+          uid: uid,
+          sellerName: sellerName,
+          sellerUid: sellerUid,
+          rating: 5,
+          noOfRating: 0,
+        );
+         await firebaseFirestore
+            .collection("products")
+            .doc(uid)
+            .set(productModel.getJson());
         output = "success";
       } catch (e) {
         output = e.toString();
